@@ -13,10 +13,12 @@ import static org.hamcrest.Matchers.is;
 
 public class DemowebshopTests extends TestBase {
 
+    String email = "testfordemowebshop@mail.ru";
+    String password = "6210test";
+
     @Test
     @DisplayName("Авторизация и добавление товара API+UI")
     void addProductGetCookiesAndSetItToBrowserByApiThenCheckValueInBrowser() {
-
         open("books");
         given()
                 .cookie("Nop.customer=ee1baf75-daee-428b-ad29-a2b20005ba7b")
@@ -30,8 +32,8 @@ public class DemowebshopTests extends TestBase {
         String cookie =
                 given()
                         .contentType("application/x-www-form-urlencoded")
-                        .formParam("Email", "testfordemowebshop@mail.ru")
-                        .formParam("Password", "6210test")
+                        .formParam("Email", email)
+                        .formParam("Password", password)
                         .when()
                         .post("login")
                         .then()
@@ -44,7 +46,5 @@ public class DemowebshopTests extends TestBase {
         open("");
         $(".account").shouldHave(text("testfordemowebshop@mail.ru"));
         $(".cart-qty").shouldHave(text("(1)"));
-
-
     }
 }
