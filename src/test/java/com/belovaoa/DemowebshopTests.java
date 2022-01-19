@@ -1,13 +1,10 @@
 package com.belovaoa;
 
-import io.restassured.response.Response;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Cookie;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.value;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
@@ -17,36 +14,37 @@ import static org.hamcrest.Matchers.is;
 public class DemowebshopTests extends TestBase {
 
     @Test
-    @BeforeEach
-    void getCookiesAndSetItToBrowserByAPIthenAddProductAndCheckValueInBrowser() {
+    @DisplayName("Авторизация и добавление товара API+UI")
+    void addProductGetCookiesAndSetItToBrowserByApiThenCheckValueInBrowser() {
+
+        open("books");
+        given()
+                .cookie("Nop.customer=ee1baf75-daee-428b-ad29-a2b20005ba7b")
+                .when()
+                .post("addproducttocart/catalog/13/1/1")
+                .then()
+                .statusCode(200)
+                .body("success", is(true))
+                .body("message", is("The product has been added to your <a href=\"/cart\">shopping cart</a>"));
 
         String cookie =
                 given()
                         .contentType("application/x-www-form-urlencoded")
-                        .formParam("testfordemowebshop@mail.ru")
-                        .formParam("6210test")
+                        .formParam("Email", "testfordemowebshop@mail.ru")
+                        .formParam("Password", "6210test")
                         .when()
                         .post("login")
                         .then()
-                        .statusCode(200)
+                        .statusCode(302)
                         .extract()
-                        .cookie("Nop.customer");
+                        .cookie("NOPCOMMERCE.AUTH");
         open("Themes/DefaultClean/Content/images/logo.png");
         getWebDriver().manage().addCookie(
-                new Cookie("Nop.customer", cookie));
+                new Cookie("NOPCOMMERCE.AUTH", cookie));
         open("");
+        $(".account").shouldHave(text("testfordemowebshop@mail.ru"));
+        $(".cart-qty").shouldHave(text("(1)"));
 
-                given()
-                        .contentType("application/x-www-form-urlencoded; charset=UTF-8")
-                        .cookie("Nop.customer", "cookie")
-                        .body("product_attribute_72_5_18=53&product_attribute_72_6_19=54" +
-                                "&product_attribute_72_3_20=57&addtocart_72.EnteredQuantity=1")
-                        .when()
-                        .post("addproducttocart/details/72/1")
-                        .then()
-                        .statusCode(200)
-                        .body("success", is(true))
-                        .body("message", is("The product has been added to your <a href=\"/cart\">shopping cart</a>"))
-                        .extract().response();
+
     }
 }
