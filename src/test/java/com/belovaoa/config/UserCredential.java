@@ -7,5 +7,5 @@ public interface UserCredential extends Config {
 
     String email();
     String password();
-    String cookie();
+    //String cookie();
 }
