@@ -15,13 +15,14 @@ public class DemowebshopTests extends TestBase {
 
     String email = "testfordemowebshop@mail.ru";
     String password = "6210test";
+    String cookie = "Nop.customer=ee1baf75-daee-428b-ad29-a2b20005ba7b";
 
     @Test
     @DisplayName("Авторизация и добавление товара API+UI")
     void addProductGetCookiesAndSetItToBrowserByApiThenCheckValueInBrowser() {
         open("books");
         given()
-                .cookie("Nop.customer=ee1baf75-daee-428b-ad29-a2b20005ba7b")
+                .cookie(cookie)
                 .when()
                 .post("addproducttocart/catalog/13/1/1")
                 .then()
