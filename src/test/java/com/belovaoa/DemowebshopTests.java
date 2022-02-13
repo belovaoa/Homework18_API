@@ -1,5 +1,7 @@
 package com.belovaoa;
 
+import com.belovaoa.config.UserCredential;
+import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Cookie;
@@ -13,16 +15,15 @@ import static org.hamcrest.Matchers.is;
 
 public class DemowebshopTests extends TestBase {
 
-    String email = "testfordemowebshop@mail.ru";
-    String password = "6210test";
-    String cookie = "Nop.customer=ee1baf75-daee-428b-ad29-a2b20005ba7b";
+    public static UserCredential credentials =
+            ConfigFactory.create(UserCredential.class);
 
     @Test
     @DisplayName("Авторизация и добавление товара API+UI")
     void addProductGetCookiesAndSetItToBrowserByApiThenCheckValueInBrowser() {
         open("books");
         given()
-                .cookie(cookie)
+                .cookie(credentials.cookie())
                 .when()
                 .post("addproducttocart/catalog/13/1/1")
                 .then()
@@ -33,8 +34,8 @@ public class DemowebshopTests extends TestBase {
         String cookie =
                 given()
                         .contentType("application/x-www-form-urlencoded")
-                        .formParam("Email", email)
-                        .formParam("Password", password)
+                        .formParam("Email", credentials.email())
+                        .formParam("Password", credentials.password())
                         .when()
                         .post("login")
                         .then()
