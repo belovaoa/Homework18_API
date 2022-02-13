@@ -10,5 +10,7 @@ public interface UserCredential extends Config {
 
     @DefaultValue("6210test")
     String password();
-    //String cookie();
+
+    @DefaultValue("Nop.customer=ee1baf75-daee-428b-ad29-a2b20005ba7b")
+    String cookie();
 }

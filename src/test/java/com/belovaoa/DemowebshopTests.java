@@ -23,7 +23,7 @@ public class DemowebshopTests extends TestBase {
     void addProductGetCookiesAndSetItToBrowserByApiThenCheckValueInBrowser() {
         open("books");
         given()
-                .cookie("Nop.customer=ee1baf75-daee-428b-ad29-a2b20005ba7b")
+                .cookie(credentials.cookie())
                 .when()
                 .post("addproducttocart/catalog/13/1/1")
                 .then()
