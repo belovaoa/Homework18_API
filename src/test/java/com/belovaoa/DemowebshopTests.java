@@ -39,7 +39,7 @@ public class DemowebshopTests extends TestBase {
                         .when()
                         .post("login")
                         .then()
-                        .statusCode(200)
+                        .statusCode(302)
                         .extract()
                         .cookie("NOPCOMMERCE.AUTH");
         open("Themes/DefaultClean/Content/images/logo.png");
