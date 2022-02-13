@@ -1,11 +1,13 @@
 package com.belovaoa;
 
 import com.belovaoa.config.UserCredential;
+import com.belovaoa.filters.CustomLogFilter;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Cookie;
 
+import static com.belovaoa.filters.CustomLogFilter.customLogFilter;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -23,6 +25,7 @@ public class DemowebshopTests extends TestBase {
     void addProductGetCookiesAndSetItToBrowserByApiThenCheckValueInBrowser() {
         open("books");
         given()
+                .filter(customLogFilter().withCustomTemplates())
                 .cookie(credentials.cookie())
                 .when()
                 .post("addproducttocart/catalog/13/1/1")

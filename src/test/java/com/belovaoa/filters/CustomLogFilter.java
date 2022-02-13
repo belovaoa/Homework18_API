@@ -10,6 +10,7 @@ public class CustomLogFilter {
     }
 
     public static CustomLogFilter customLogFilter() {
+
         return InitLogFilter.logFilter;
     }
 
