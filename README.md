@@ -7,6 +7,10 @@
 
 :point_right: Click [here](https://jenkins.autotests.cloud/job/09-Lesya_Belova-HW19-API/) to see the job
 
+![Скриншот 13-02-2022 201123](https://user-images.githubusercontent.com/93153268/153806316-923c4fb8-a1e0-4b00-b9c5-f56273ff37c2.jpg)
+
+![allure_APItests_screenshot](https://user-images.githubusercontent.com/93153268/153806346-c0c899bf-89e4-4f37-b87b-372ff31419e2.jpg)
+
 
 ## :heavy_check_mark: Интеграция с TMS Allure TestOps
 
