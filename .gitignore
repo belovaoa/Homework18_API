@@ -49,3 +49,4 @@ settings.gradle
 telegram.json
 allure-notifications-3.1.1.jar
 telegram-notifications-task.txt
+config/credential.properties

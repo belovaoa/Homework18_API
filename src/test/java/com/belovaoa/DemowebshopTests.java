@@ -1,7 +1,6 @@
 package com.belovaoa;
 
 import com.belovaoa.config.UserCredential;
-import com.belovaoa.filters.CustomLogFilter;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
