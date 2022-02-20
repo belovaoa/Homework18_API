@@ -22,4 +22,4 @@
 
 ## :heavy_check_mark: Уведомление о прохождении тестов в Telegram
 
-![telegram_APItests](https://user-images.githubusercontent.com/93153268/153806189-55ecd910-cc83-4626-8f4d-c84e3dc0736e.jpg)
+
