@@ -16,7 +16,7 @@
 
 ![allureTestOps_APItests_add_screenshot](https://user-images.githubusercontent.com/93153268/153806409-44713843-5083-4825-8be9-2cca5369e5ab.jpg)
 ![TestOps_APItests](https://user-images.githubusercontent.com/93153268/153806425-4d8b5035-300c-4898-bb18-8ef4efca96c7.jpg)
-![Скриншот 13-02-2022 200823](https://user-images.githubusercontent.com/93153268/153806432-437a995f-5353-48ed-867e-debafe9a403e.jpg)
+![](pictures/allure_screen_fornewtests.jpg)
 ![Скриншот 13-02-2022 200844](https://user-images.githubusercontent.com/93153268/153806436-744a0196-1678-44cd-ae84-b04e22cdd124.jpg)
 
 
